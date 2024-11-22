@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "deploying notebooks with jornada de dados"
+version = "0.1.0"
+description = ""
+authors = ["Fefe Alves <monitore.falves@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.115.5"
+uvicorn = "^0.32.1"
+pytest = "^8.3.3"
+taskipy = "^1.14.0"
+
+
+[tool.poetry.group.dev.dependencies]
+httpx = "^0.27.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.taskipy.tasks]
+uvicorn_run = "uvicorn main:app --reload"
+test = "pytest -v"
+kill_server = "kill -9 $(lsof -t -i:8000)"
