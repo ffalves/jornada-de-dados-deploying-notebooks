@@ -22,14 +22,14 @@ class ProductClass():
 
     # Functions
     def get_products(self):
-        return ProductClass.products
+        return self.products
 
     def get_product_id(self, id: int) -> Union[Dict[str, any], None]:
-        for product in ProductClass.products:
+        for product in self.products:
             if product["id"] == id:
                 return product
         return None
 
-    def add_product(product: Dict[str, any]):
-        ProductClass.products.append(product)
+    def add_product(self, product):
+        self.products.append(product)
         return product
