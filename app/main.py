@@ -21,5 +21,8 @@ def get_product_id(id: int):
         raise HTTPException(status_code=404, detail={"Status": 404, "Message": "Product not found!"})
     return product
 
+@app.post("/products", response_model=ProductSchema)
+def add_product(product: ProductSchema):
+    return products_list.add_product(product)
 
 
