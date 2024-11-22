@@ -20,3 +20,15 @@ def test_length_products():
     response = client.get("/products")
     assert len(response.json()) == 3
 
+def test_product():
+    response = client.get("/products/1")
+    assert response.status_code == 200
+
+def test_product_id():
+    response = client.get("/products/1")
+    assert response.json()["id"] ==1
+
+def test_product_id_error_message():
+    response = client.get("/products/4")
+    assert response.json() == {"Status": 404, "Message": "Product not found!"}
+
