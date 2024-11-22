@@ -1,0 +1,1 @@
+This practice is part of Jornada de Dados course about deploying jupyter notebooks"
