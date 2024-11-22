@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "This practice is part of Jornada de Dados course about deploying jupyter notebooks"
 authors = ["Fefe Alves <monitore.falves@gmail.com>"]
 readme = "README.md"
-package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
