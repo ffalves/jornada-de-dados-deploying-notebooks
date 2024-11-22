@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "deploying notebooks with jornada de dados"
 version = "0.1.0"
-description = "A project to deploy notebooks with CI/CD integration following Jornada de Dados Course"
+description = ""
 authors = ["Fefe Alves <monitore.falves@gmail.com>"]
 readme = "README.md"
 
@@ -9,21 +9,13 @@ readme = "README.md"
 python = "^3.13"
 fastapi = "^0.115.5"
 uvicorn = "^0.32.1"
+pytest = "^8.3.3"
 taskipy = "^1.14.0"
 
+
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.3"
 httpx = "^0.27.2"
 
-[tool.pytest.ini_options]
-# Drive with tests for pytest
-testpaths = ["."]
-
-# Optional marks for news tests
-markers = [
-    "unit: mark a test as a unit test",
-    "integration: mark a test as an integration test"
-]
 
 [build-system]
 requires = ["poetry-core"]
