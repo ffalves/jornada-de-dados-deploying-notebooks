@@ -20,12 +20,20 @@ jobs:
         with:
           python-version: '3.13'
 
-      # Install dependencies using Poetry
-      - name: Install dependencies
+      # Install Poetry and set the PATH
+      - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      # Install dependencies using Poetry
+      - name: Install dependencies
+        run: |
           poetry install --no-interaction --no-root
+
+      # Debug directory (optional for troubleshooting)
+      - name: Debug directory
+        run: ls -R
 
       # Run the tests
       - name: Run tests
