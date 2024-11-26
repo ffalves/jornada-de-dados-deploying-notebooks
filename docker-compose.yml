@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: ${POSTGRES_CONTAINER_NAME:-postgres_container}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-myuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mypass}
+      POSTGRES_DB: ${POSTGRES_DB:-mydb}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: ${PGADMIN_CONTAINER_NAME:-pgadmin_container} 
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@admin.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      CSRF_TRUSTED_ORIGIN: ${CSRF_TRUSTED_ORIGIN:-'https://*.github.dev http://localhost:8080'}
+    ports:
+      - "${PGADMIN_PORT:-8080}:80"
+  
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: ${PORTAINER_CONTAINER_NAME:-portainer_container}
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock" # Docker Host
+      - "portainer_data:/data" # Portainer Data
+    ports:
+      - "${PORTAINER_PORTS:-9000}:9000"
